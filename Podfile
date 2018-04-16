@@ -6,5 +6,6 @@ target 'weather-forecast' do
   use_frameworks!
 
   # Pods for weather-forecast
-
+pod 'Alamofire'
+pod 'SwiftyJSON'
 end
