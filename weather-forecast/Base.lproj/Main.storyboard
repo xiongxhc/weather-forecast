@@ -100,6 +100,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="City" id="fIa-ph-V3A"/>
+                    <connections>
+                        <outlet property="CityCountry" destination="tnW-ZP-8Yg" id="dJL-cr-PXn"/>
+                        <outlet property="WeatherType" destination="xLy-Hm-vLr" id="5qj-J5-1KM"/>
+                        <outlet property="cityCountry" destination="tnW-ZP-8Yg" id="TkA-g2-efu"/>
+                        <outlet property="currentDate" destination="ruR-Nf-tcA" id="HqD-A8-VCy"/>
+                        <outlet property="currentTemp" destination="BdC-1t-EKB" id="EXI-um-QNZ"/>
+                        <outlet property="weatherImg" destination="ci0-dr-jGr" id="jAn-Jx-Ge4"/>
+                        <outlet property="weatherType" destination="xLy-Hm-vLr" id="Li0-HB-gjg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
