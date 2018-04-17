@@ -51,24 +51,13 @@ class CurrentForecast {
         Alamofire.request(API_JSON_STRING_URL).responseJSON {
             (response) in
             let result = response.result
-            print(result.value as Any)
             
             //JSON() is from SwiftyJSON
             let json = JSON(result.value as Any)
-            
-            //city and country
             self._cityCountry_ = json["query"]["results"]["channel"]["location"]["city"].stringValue + ", " + json["query"]["results"]["channel"]["location"]["country"].stringValue
-            //weather types
             self._weatherType_ = json["query"]["results"]["channel"]["item"]["condition"]["text"].stringValue
-            //current temperature
             self._currentTemp_ = json["query"]["results"]["channel"]["item"]["condition"]["temp"].intValue
-            //current date
             self._currentDate_ = json["query"]["results"]["channel"]["item"]["condition"]["date"].stringValue
-            
-            print(self._cityCountry_)
-            print(self._weatherType_)
-            print(self._currentTemp_)
-            print(self._currentDate_)
             
             completed()
         }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class WeatherForecast {
     private var _forecastDate_: String!
@@ -42,26 +43,11 @@ class WeatherForecast {
         return _forecastHigh_
     }
     
-    init(forecastDict: Dictionary<String, AnyObject>) {
-        
-        //forecast date
-        if let date = forecastDict["date"] as? String, let day = forecastDict["day"] as? String {
-            self._forecastDate_ = date + ", " + day
-        }
-        
-        // weather type
-        if let type = forecastDict["text"] as? String {
-            self._forecastType_ = type
-        }
-        
-        //temperture range
-        if let low = forecastDict["low"] as? String {
-            self._forecastLow_ = low
-        }
-        if let high = forecastDict["high"] as? String {
-            self._forecastHigh_ = high
-        }
-        
+    init(forecastDict: JSON) {
+        self._forecastDate_ = forecastDict["date"].stringValue + ", " + forecastDict["day"].stringValue
+        self._forecastType_ = forecastDict["text"].stringValue
+        self._forecastLow_ = forecastDict["low"].stringValue
+        self._forecastHigh_ = forecastDict["high"].stringValue
     }
     
 }

@@ -20,25 +20,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentDate: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    //Constants
-    
     //Variables
     var currentForecast: CurrentForecast!
     var weatherForecast: WeatherForecast!
     var weatherArray = [WeatherForecast]()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateCalls()
         currentForecast = CurrentForecast()
         currentForecast.getCurrentWeatherData {
-            //print("API DATA DOWNLOAD COMPLETE")
+            print("CURR_FORECAST DOWNLOAD COMPLETE")
             self.viewUpdate()
         }
         getWeatherForecastData {
-            print("API DATA DOWNLOAD COMPLETE")
+            print("FORECAST DATA DOWNLOAD COMPLETE")
         }
     }
     
@@ -60,24 +56,17 @@ class ViewController: UIViewController {
             (response) in
             let result = response.result
             
+            //JSON() is from SwiftyJSON
+            let json = JSON(result.value as Any)
+            
             //build dictionary
-            if let dict = result.value as? Dictionary<String, AnyObject> {
-                if (dict["query"] as? [Dictionary<String, AnyObject>]) != nil {
-                    if (dict["results"] as? [Dictionary<String, AnyObject>]) != nil {
-                        if (dict["channel"] as? [Dictionary<String, AnyObject>]) != nil {
-                            if (dict["item"] as? [Dictionary<String, AnyObject>]) != nil {
-                                if let list = dict["forecast"] as? [Dictionary<String, AnyObject>] {
-                                    for each in list {
-                                        let forecast = WeatherForecast(forecastDict: each)
-                                        self.weatherArray.append(forecast)
-                                    }
-                                    self.tableView.reloadData()
-                                }
-                            }
-                        }
-                    }
-                }
+            let forecastList = json["query"]["results"]["channel"]["item"]["forecast"]
+            for i in 0..<forecastList.count {
+                let forecast = WeatherForecast(forecastDict: forecastList[i])
+                self.weatherArray.append(forecast)
+                //print("\(forecastList[i])")
             }
+            self.tableView.reloadData()
             completed()
         }
     }
