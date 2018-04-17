@@ -27,9 +27,9 @@ class ForecastTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configCell(date: String, type: String, lowTemp: Int, highTemp: Int) {
-        self.forecastDate.text = date
-        self.forecastType.text = type
-        self.forecastTempRange.text = String(lowTemp) + " F" + " ~ " + String(highTemp) + " F"
+    func configCell(weatherData: WeatherForecast) {
+        self.forecastDate.text = weatherData.forecastDate
+        self.forecastType.text = weatherData.forecastType
+        self.forecastTempRange.text = weatherData.forecastLow + " F" + " ~ " + weatherData.forecastHigh + " F"
     }
 }

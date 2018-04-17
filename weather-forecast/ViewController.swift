@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -22,6 +24,9 @@ class ViewController: UIViewController {
     
     //Variables
     var currentForecast: CurrentForecast!
+    var weatherForecast: WeatherForecast!
+    var weatherArray = [WeatherForecast]()
+    
     
 
     override func viewDidLoad() {
@@ -31,6 +36,9 @@ class ViewController: UIViewController {
         currentForecast.getCurrentWeatherData {
             //print("API DATA DOWNLOAD COMPLETE")
             self.viewUpdate()
+        }
+        getWeatherForecastData {
+            print("API DATA DOWNLOAD COMPLETE")
         }
     }
     
@@ -46,7 +54,33 @@ class ViewController: UIViewController {
         currentDate.text = currentForecast.currentDate
     }
     
-    
+    //get json using Alamofire
+    func getWeatherForecastData(completed: @escaping downloadedData) {
+        Alamofire.request(API_JSON_STRING_URL).responseJSON {
+            (response) in
+            let result = response.result
+            
+            //build dictionary
+            if let dict = result.value as? Dictionary<String, AnyObject> {
+                if (dict["query"] as? [Dictionary<String, AnyObject>]) != nil {
+                    if (dict["results"] as? [Dictionary<String, AnyObject>]) != nil {
+                        if (dict["channel"] as? [Dictionary<String, AnyObject>]) != nil {
+                            if (dict["item"] as? [Dictionary<String, AnyObject>]) != nil {
+                                if let list = dict["forecast"] as? [Dictionary<String, AnyObject>] {
+                                    for each in list {
+                                        let forecast = WeatherForecast(forecastDict: each)
+                                        self.weatherArray.append(forecast)
+                                    }
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            completed()
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -57,12 +91,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "forecastCell") as! ForecastTableViewCell
-        cell.configCell(date: "12 Apr 2018, Wed", type: "Cloudy", lowTemp: 82, highTemp: 88)
+        cell.configCell(weatherData: weatherArray[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return weatherArray.count
     }
 }
 

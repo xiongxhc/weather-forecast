@@ -11,6 +11,7 @@
 		FFCECC1620854EB300B06A51 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCECC1520854EB300B06A51 /* API.swift */; };
 		FFCECC1A2085518C00B06A51 /* CurrentForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCECC192085518C00B06A51 /* CurrentForecast.swift */; };
 		FFCECC1C2086119B00B06A51 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCECC1B2086119B00B06A51 /* ForecastTableViewCell.swift */; };
+		FFCECC1E20862C8200B06A51 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCECC1D20862C8200B06A51 /* WeatherForecast.swift */; };
 		FFD5F5FB20851B96001F50AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5F5FA20851B96001F50AB /* AppDelegate.swift */; };
 		FFD5F5FD20851B96001F50AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD5F5FC20851B96001F50AB /* ViewController.swift */; };
 		FFD5F60020851B96001F50AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD5F5FE20851B96001F50AB /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		FFCECC1520854EB300B06A51 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FFCECC192085518C00B06A51 /* CurrentForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentForecast.swift; sourceTree = "<group>"; };
 		FFCECC1B2086119B00B06A51 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		FFCECC1D20862C8200B06A51 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		FFD5F5F720851B95001F50AB /* weather-forecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "weather-forecast.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD5F5FA20851B96001F50AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD5F5FC20851B96001F50AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCECC192085518C00B06A51 /* CurrentForecast.swift */,
+				FFCECC1D20862C8200B06A51 /* WeatherForecast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				FFCECC1620854EB300B06A51 /* API.swift in Sources */,
 				FFCECC1C2086119B00B06A51 /* ForecastTableViewCell.swift in Sources */,
 				FFD5F5FD20851B96001F50AB /* ViewController.swift in Sources */,
+				FFCECC1E20862C8200B06A51 /* WeatherForecast.swift in Sources */,
 				FFCECC1A2085518C00B06A51 /* CurrentForecast.swift in Sources */,
 				FFD5F5FB20851B96001F50AB /* AppDelegate.swift in Sources */,
 			);
