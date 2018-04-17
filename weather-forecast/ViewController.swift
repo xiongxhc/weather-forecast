@@ -21,12 +21,26 @@ class ViewController: UIViewController {
     //Constants
     
     //Variables
-    
+    var currentForecast: CurrentForecast!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentForecast = CurrentForecast()
+        currentForecast.getCurrentWeatherData {
+            //print("API DATA DOWNLOAD COMPLETE")
+            self.viewUpdate()
+        }
     }
+    
+    func viewUpdate() {
+        cityCountry.text = currentForecast.cityCountry
+        weatherType.text = currentForecast.weatherType
+        currentTemp.text = String(currentForecast.currentTemp) + " F"
+        currentDate.text = currentForecast.currentDate
+    }
+    
+    
 }
 
 

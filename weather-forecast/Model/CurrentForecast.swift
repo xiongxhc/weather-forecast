@@ -12,9 +12,10 @@ import SwiftyJSON
 
 class CurrentForecast {
     
+    //Variables
     private var _cityCountry_: String!
     private var _weatherType_: String!
-    private var _currentTemp_: Double!
+    private var _currentTemp_: Int!
     private var _currentDate_: String!
     
     var cityCountry : String {
@@ -31,9 +32,9 @@ class CurrentForecast {
         return _weatherType_
     }
     
-    var currentTemp : Double {
+    var currentTemp : Int {
         if _currentTemp_ == nil {
-            _currentTemp_ = 0.0
+            _currentTemp_ = 0
         }
         return _currentTemp_
     }
@@ -45,8 +46,32 @@ class CurrentForecast {
         return _currentDate_
     }
     
+    //parsing json from given API url
     func getCurrentWeatherData(completed: @escaping downloadedData) {
-        
+        Alamofire.request(API_JSON_STRING_URL).responseJSON {
+            (response) in
+            let result = response.result
+            print(result.value)
+            
+            //JSON() is from SwiftyJSON
+            let json = JSON(result.value)
+            
+            //city and country
+            self._cityCountry_ = json["query"]["results"]["channel"]["location"]["city"].stringValue + ", " + json["query"]["results"]["channel"]["location"]["country"].stringValue
+            //weather types
+            self._weatherType_ = json["query"]["results"]["channel"]["item"]["condition"]["text"].stringValue
+            //current temperature
+            self._currentTemp_ = json["query"]["results"]["channel"]["item"]["condition"]["temp"].intValue
+            //current date
+            self._currentDate_ = json["query"]["results"]["channel"]["item"]["condition"]["date"].stringValue
+            
+            print(self._cityCountry_)
+            print(self._weatherType_)
+            print(self._currentTemp_)
+            print(self._currentDate_)
+            
+            completed()
+        }
     }
     
 }
