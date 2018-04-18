@@ -87,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				FFD5F61020851BFB001F50AB /* Misc */,
-				FFD5F60F20851BE8001F50AB /* Extensions */,
 				FFD5F60E20851BC1001F50AB /* Model */,
 				FFD5F60D20851BB9001F50AB /* View */,
 				FFD5F60C20851BAE001F50AB /* Controller */,
@@ -123,13 +122,6 @@
 				FFCECC1D20862C8200B06A51 /* WeatherForecast.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		FFD5F60F20851BE8001F50AB /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FFD5F61020851BFB001F50AB /* Misc */ = {
