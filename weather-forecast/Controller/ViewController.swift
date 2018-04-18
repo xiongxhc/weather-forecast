@@ -28,13 +28,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateCalls()
-        currentForecast = CurrentForecast()
-        currentForecast.getCurrentWeatherData {
-            //print("CURR_FORECAST DOWNLOAD COMPLETE")
-            self.viewUpdate()
-        }
         getWeatherForecastData {
             //print("FORECAST DATA DOWNLOAD COMPLETE")
+            self.viewUpdate()
         }
     }
     
@@ -74,6 +70,13 @@ class ViewController: UIViewController {
             
             //JSON() is from SwiftyJSON
             let json = JSON(result.value as Any)
+            
+            //current forecast data
+            let currCityCountry = json["query"]["results"]["channel"]["location"]["city"].stringValue + ", " + json["query"]["results"]["channel"]["location"]["country"].stringValue
+            let currWeatherType = json["query"]["results"]["channel"]["item"]["condition"]["text"].stringValue
+            let currTemp = json["query"]["results"]["channel"]["item"]["condition"]["temp"].intValue
+            let currDate = json["query"]["results"]["channel"]["item"]["condition"]["date"].stringValue
+            self.currentForecast = CurrentForecast(city: currCityCountry, type: currWeatherType, temp: currTemp, date: currDate)
             
             //build dictionary
             let forecastList = json["query"]["results"]["channel"]["item"]["forecast"]
