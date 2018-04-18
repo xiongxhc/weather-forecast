@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         if ((weatherType.text?.lowercased().range(of: "thunder")) != nil) {
             weatherImg.image = #imageLiteral(resourceName: "storm")
         }
-        if ((weatherType.text?.lowercased().range(of: "rain")) != nil) {
+        if ((weatherType.text?.lowercased().range(of: "shower")) != nil) {
             weatherImg.image = #imageLiteral(resourceName: "rain")
         }
         if ((weatherType.text?.lowercased().range(of: "cloud")) != nil) {
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         if ((weatherType.text?.lowercased().range(of: "sun")) != nil) {
             weatherImg.image = #imageLiteral(resourceName: "sun")
         }
-        if ((weatherType.text?.lowercased().range(of: "wind")) != nil) {
+        if ((weatherType.text?.lowercased().range(of: "breezy")) != nil) {
             weatherImg.image = #imageLiteral(resourceName: "wind")
         }
     }
