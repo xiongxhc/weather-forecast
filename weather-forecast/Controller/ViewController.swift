@@ -30,11 +30,11 @@ class ViewController: UIViewController {
         delegateCalls()
         currentForecast = CurrentForecast()
         currentForecast.getCurrentWeatherData {
-            print("CURR_FORECAST DOWNLOAD COMPLETE")
+            //print("CURR_FORECAST DOWNLOAD COMPLETE")
             self.viewUpdate()
         }
         getWeatherForecastData {
-            print("FORECAST DATA DOWNLOAD COMPLETE")
+            //print("FORECAST DATA DOWNLOAD COMPLETE")
         }
     }
     
@@ -48,6 +48,22 @@ class ViewController: UIViewController {
         weatherType.text = currentForecast.weatherType
         currentTemp.text = String(currentForecast.currentTemp) + " F"
         currentDate.text = currentForecast.currentDate
+    
+        if ((weatherType.text?.lowercased().range(of: "thunder")) != nil) {
+            weatherImg.image = #imageLiteral(resourceName: "storm")
+        }
+        if ((weatherType.text?.lowercased().range(of: "rain")) != nil) {
+            weatherImg.image = #imageLiteral(resourceName: "rain")
+        }
+        if ((weatherType.text?.lowercased().range(of: "cloud")) != nil) {
+            weatherImg.image = #imageLiteral(resourceName: "cloud")
+        }
+        if ((weatherType.text?.lowercased().range(of: "sun")) != nil) {
+            weatherImg.image = #imageLiteral(resourceName: "sun")
+        }
+        if ((weatherType.text?.lowercased().range(of: "wind")) != nil) {
+            weatherImg.image = #imageLiteral(resourceName: "wind")
+        }
     }
     
     //get json using Alamofire

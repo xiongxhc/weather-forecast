@@ -91,7 +91,7 @@
 				FFD5F60E20851BC1001F50AB /* Model */,
 				FFD5F60D20851BB9001F50AB /* View */,
 				FFD5F60C20851BAE001F50AB /* Controller */,
-				FFD5F5FC20851B96001F50AB /* ViewController.swift */,
+				FFD5F5FA20851B96001F50AB /* AppDelegate.swift */,
 				FFD5F5FE20851B96001F50AB /* Main.storyboard */,
 				FFD5F60120851B96001F50AB /* Assets.xcassets */,
 				FFD5F60320851B96001F50AB /* LaunchScreen.storyboard */,
@@ -103,7 +103,7 @@
 		FFD5F60C20851BAE001F50AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FFD5F5FA20851B96001F50AB /* AppDelegate.swift */,
+				FFD5F5FC20851B96001F50AB /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
